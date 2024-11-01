@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using NavigationBar;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,6 +27,19 @@ namespace DemoApp
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             bar.SelectedIndex = 2;
+        }
+
+        private void bar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var select = e;
+            var bar1 = sender as MagicBar;
+
+            content.Content = bar1.SelectedIndex switch
+            {
+                0 => new TextBox() { Text = bar1.SelectedItem.ToString() },
+                1 => new TextBox() { Text = bar1.SelectedItem.ToString() },
+                _=> new TextBox() { Text = bar1.SelectedItem.ToString() },
+            };
         }
     }
 }

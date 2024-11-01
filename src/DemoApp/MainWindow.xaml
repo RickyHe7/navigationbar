@@ -5,16 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:navigation="clr-namespace:NavigationBar;assembly=NavigationBar"
         xmlns:james="https://jamesnet.dev/xaml/presentation"
+        xmlns:local="clr-namespace:DemoApp"
         mc:Ignorable="d"
         Background="#222222"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <navigation:MagicBar x:Name="bar">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <navigation:MagicBar x:Name="bar" SelectionChanged="bar_SelectionChanged">
             <ListBoxItem Content="Microsoft" Tag="{x:Static james:IconType.Microsoft}"/>
             <ListBoxItem Content="Apple" Tag="{x:Static james:IconType.Apple}"/>
             <ListBoxItem Content="Google" Tag="{x:Static james:IconType.Google}"/>
             <ListBoxItem Content="Facebook" Tag="{x:Static james:IconType.Facebook}"/>
-            <ListBoxItem Content="Instagram" Tag="{x:Static james:IconType.Instagram}"/>
+            <ListBoxItem Content="Instagram" Tag="{x:Static james:IconType.Folder}"/>
         </navigation:MagicBar>
+        <ContentControl Grid.Row="1" x:Name="content"/>
     </Grid>
 </Window>
